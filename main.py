@@ -4,7 +4,7 @@ from discord import app_commands
 import random
 import asyncio
 import os
-
+import json
 intents = discord.Intents.default()
 
 bot = commands.Bot(command_prefix="!", intents=intents)
