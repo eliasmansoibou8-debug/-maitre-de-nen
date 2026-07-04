@@ -38,7 +38,15 @@ async def on_ready():
 
 @bot.tree.command(name="eveil", description="Éveille votre Nen")
 async def eveil(interaction: discord.Interaction):
+    data = charger_donnees()
+    user_id = str(interaction.user.id)
 
+    if user_id in data:
+        await interaction.response.send_message(
+            "❌ Vous avez déjà éveillé votre Nen. Cette commande ne peut être utilisée qu'une seule fois.",
+            ephemeral=True
+        )
+        return
     await interaction.response.send_message(
         "```"
         "━━━━━━━━━━━━━━━━━━━━━━\n"
