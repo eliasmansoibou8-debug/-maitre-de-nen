@@ -17,7 +17,16 @@ types_nen = {
     "🎮 Manipulation": "Vous pouvez contrôler des êtres vivants ou des objets grâce à votre aura.",
     "👁️ Spécialisation": "Votre Nen est unique et ne suit aucune règle des autres catégories."
 }
+def charger_donnees():
+    try:
+        with open("data.json", "r") as f:
+            return json.load(f)
+    except:
+        return {}
 
+def sauvegarder_donnees(data):
+    with open("data.json", "w") as f:
+        json.dump(data, f, indent=4)
 @bot.event
 async def on_ready():
     print(f"{bot.user} est connecté.")
