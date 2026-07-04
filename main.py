@@ -84,7 +84,11 @@ async def eveil(interaction: discord.Interaction):
     await asyncio.sleep(2)
 
     nen = random.choice(list(types_nen.keys()))
+    data[user_id] = {
+        "nen": nen
+    }
 
+    sauvegarder_donnees(data)
     embed = discord.Embed(
         title="✨ VOTRE NEN A ÉTÉ ÉVEILLÉ ✨",
         description=f"## {nen}\n\n{types_nen[nen]}",
