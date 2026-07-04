@@ -98,7 +98,34 @@ async def eveil(interaction: discord.Interaction):
     embed.set_footer(text="Le véritable entraînement commence maintenant...")
 
     await interaction.edit_original_response(content="", embed=embed)
+@bot.tree.command(name="reseteveil", description="Réinitialise l'éveil d'un joueur")
+async def reseteveil(interaction: discord.Interaction, membre: discord.Member):
 
+    # Seul ton compte peut utiliser cette commande
+    if interaction.user.id != 550742070399205385:
+        await interaction.response.send_message(
+            "❌ Vous n'êtes pas autorisé à utiliser cette commande.",
+            ephemeral=True
+        )
+        return
+
+    data = charger_donnees()
+
+    user_id = str(membre.id)
+
+    if user_id not in data:
+        await interaction.response.send_message(
+            "❌ Ce joueur n'a pas encore éveillé son Nen.",
+            ephemeral=True
+        )
+        return
+
+    del data[user_id]
+    sauvegarder_donnees(data)
+
+    await interaction.response.send_message(
+        f"✅ L'éveil de {membre.mention} a été réinitialisé."
+    )
 TOKEN = os.getenv("TOKEN")
 
 bot.run(TOKEN)
