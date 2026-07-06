@@ -36,7 +36,7 @@ def sauvegarder_donnees(data):
 @bot.event
 async def on_ready():
     print(f"{bot.user} est connecté !")
-    wait bot.tree.sync()
+    await bot.tree.sync()
     print("Commandes synchronisées.")
 
 
