@@ -58,7 +58,7 @@ async def eveil(interaction: discord.Interaction):
     )
 
     await asyncio.sleep(2)
-
+    
     await interaction.edit_original_response(content=
         "```"
         "━━━━━━━━━━━━━━━━━━━━━━\n"
@@ -83,38 +83,39 @@ async def eveil(interaction: discord.Interaction):
 
     await asyncio.sleep(2)
 
-    nen = random.choices(
-    population=[
-        "💪 Renforcement",
-        "⚡ Émission",
-        "💎 Transmutation",
-        "🎭 Matérialisation",
-        "🎮 Manipulation",
-        "👁️ Spécialisation"
-    ],
-    weights=[23, 20, 20, 18, 17, 2],
-    k=1
-)[0]
+        nen = random.choices(
+        population=[
+            "💪 Renforcement",
+            "⚡ Émission",
+            "💎 Transmutation",
+            "🎭 Matérialisation",
+            "🎮 Manipulation",
+            "👁️ Spécialisation"
+        ],
+        weights=[23, 20, 20, 18, 17, 2],
+        k=1
+    )[0]
 
-data[user_id] = {
-    "nen": nen
-}
-data[user_id] = {
-    "nen": nen
-}
+    data[user_id] = {
+        "nen": nen
+    }
 
-sauvegarder_donnees(data)
+    sauvegarder_donnees(data)
 
-embed = discord.Embed(
-    title="✨ VOTRE NEN A ÉTÉ ÉVEILLÉ ✨",
-    ...
-)        description=f"## {nen}\n\n{types_nen[nen]}",
+    embed = discord.Embed(
+        title="✨ VOTRE NEN A ÉTÉ ÉVEILLÉ ✨",
+        description=f"## {nen}\n\n{types_nen[nen]}",
         color=0x6b46c1
     )
 
-    embed.set_footer(text="Le véritable entraînement commence maintenant...")
+    embed.set_footer(
+        text="Le véritable entraînement commence maintenant..."
+    )
 
-    await interaction.edit_original_response(content="", embed=embed)
+    await interaction.edit_original_response(
+        content="",
+        embed=embed
+    )
 @bot.tree.command(name="reseteveil", description="Réinitialise l'éveil d'un joueur")
 async def reseteveil(interaction: discord.Interaction, membre: discord.Member):
 
