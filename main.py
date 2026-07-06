@@ -83,9 +83,18 @@ async def eveil(interaction: discord.Interaction):
 
     await asyncio.sleep(2)
 
-    nen = random.choice(list(types_nen.keys()))
-    data[user_id] = {
-        "nen": nen
+    nen = random.choices(
+    population=[
+        "💪 Renforcement",
+        "⚡ Émission",
+        "💎 Transmutation",
+        "🎭 Matérialisation",
+        "🎮 Manipulation",
+        "👁️ Spécialisation"
+    ],
+    weights=[23, 20, 20, 18, 17, 2],
+    k=1
+)[0]
     }
 
     sauvegarder_donnees(data)
