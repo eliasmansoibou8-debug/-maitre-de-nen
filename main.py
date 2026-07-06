@@ -95,9 +95,12 @@ async def eveil(interaction: discord.Interaction):
     weights=[23, 20, 20, 18, 17, 2],
     k=1
 )[0]
-    }
 
-    sauvegarder_donnees(data)
+data[user_id] = {
+    "nen": nen
+}
+
+sauvegarder_donnees(data)
     embed = discord.Embed(
         title="✨ VOTRE NEN A ÉTÉ ÉVEILLÉ ✨",
         description=f"## {nen}\n\n{types_nen[nen]}",
