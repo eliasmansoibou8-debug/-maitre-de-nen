@@ -39,6 +39,14 @@ async def on_ready():
     await bot.tree.sync()
     print("Commandes synchronisées.")
     @bot.tree.command(name="eveil", description="Éveille votre Nen")
+@bot.event
+async def on_ready():
+    print(f"{bot.user} est connecté !")
+    await bot.tree.sync()
+    print("Commandes synchronisées.")
+
+
+@bot.tree.command(name="eveil", description="Éveille votre Nen")
 async def eveil(interaction: discord.Interaction):
 
     data = charger_donnees()
