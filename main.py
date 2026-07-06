@@ -99,11 +99,16 @@ async def eveil(interaction: discord.Interaction):
 data[user_id] = {
     "nen": nen
 }
+data[user_id] = {
+    "nen": nen
+}
 
 sauvegarder_donnees(data)
-    embed = discord.Embed(
-        title="✨ VOTRE NEN A ÉTÉ ÉVEILLÉ ✨",
-        description=f"## {nen}\n\n{types_nen[nen]}",
+
+embed = discord.Embed(
+    title="✨ VOTRE NEN A ÉTÉ ÉVEILLÉ ✨",
+    ...
+)        description=f"## {nen}\n\n{types_nen[nen]}",
         color=0x6b46c1
     )
 
